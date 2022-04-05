@@ -5,6 +5,7 @@ const elButton = document.querySelector(".form__button");
 const elSavedList = document.querySelector(".saved-list");
 const modal = document.querySelector(".modal");
 const cont = document.querySelector(".container");
+const siteMain = document.querySelector(".site-main");
 
 // const localFilms =JSON.parse(window.localStorage.getItem("document"));
 
@@ -18,7 +19,7 @@ elSavedList.addEventListener("click", (ev) => {
         const svID = Number(ev.target.dataset.saveID);
         const findSvId = savedArr.findIndex(e => e.id == svID);
         savedArr.splice(findSvId,1);
-            //  window.localStorage.setItem("document" , JSON.stringify(films));
+            //  window.localStorage.setItem("document" , JSON.stringify(savedArr));
         rederSavedArr(savedArr,elSavedList)
     }
 });
@@ -39,6 +40,7 @@ function rederSavedArr(arr, element) {
         element.appendChild(saveItem);
         saveItem.appendChild(saveDelete);
 
+            //  window.localStorage.setItem("document" , JSON.stringify(savedArr));
 
     });
 }
@@ -64,6 +66,7 @@ elList.addEventListener("click", evt => {
             modalArr.push(findBtnIdMore);
 
         };
+        siteMain.classList.add("opasity");
         function createModal(arr, element) {
             modal.innerHTML = "";
             const deleteModal = document.createElement("span");
@@ -101,6 +104,7 @@ elList.addEventListener("click", evt => {
 
             deleteModal.addEventListener("click" , () => {
                 modal.classList.remove("del");
+                siteMain.classList.remove("opasity")
 
             }) ;
         }
